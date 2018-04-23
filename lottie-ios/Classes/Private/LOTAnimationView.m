@@ -238,6 +238,7 @@ static NSString * const kCompContainerAnimationKey = @"play";
 # pragma mark - External Methods - Play Control
 
 - (void)play {
+    printf("Testing, this is Russell");
   if (!_sceneModel) {
     _isAnimationPlaying = YES;
     return;
