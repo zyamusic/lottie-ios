@@ -94,6 +94,7 @@
 }
 
 - (void)displayWithFrame:(NSNumber *)frame forceUpdate:(BOOL)forceUpdate {
+    NSDate *start = [NSDate date];
   if (ENABLE_DEBUG_LOGGING) NSLog(@"-------------------- Composition Displaying Frame %@ --------------------", frame);
   [super displayWithFrame:frame forceUpdate:forceUpdate];
   NSNumber *newFrame = @((frame.floatValue  - _frameOffset.floatValue) / self.timeStretchFactor.floatValue);
@@ -105,6 +106,12 @@
   }
   if (ENABLE_DEBUG_LOGGING) NSLog(@"-------------------- ------------------------------- --------------------");
   if (ENABLE_DEBUG_LOGGING) NSLog(@"-------------------- ------------------------------- --------------------");
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,Composition.DisplayWithFrame\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 - (void)setViewportBounds:(CGRect)viewportBounds {
