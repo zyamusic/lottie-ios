@@ -98,8 +98,9 @@
   CGFloat opacityStep = (endOpacity - startOpacity) / copies;
   _instanceLayer.opacity = startOpacity;
   _replicatorLayer.instanceAlphaOffset = opacityStep;
-    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
-    if (ENABLE_DEBUG_TIMING_LOGGING) [self logString:[NSString stringWithFormat:@"%f RepeaterRendererLocalUpdate", timeInterval]];
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    if (ENABLE_DEBUG_TIMING_LOGGING) [printf([NSString stringWithFormat:@"%f RepeaterRendererLocalUpdate", timeInterval])];
 }
 
 @end

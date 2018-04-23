@@ -109,8 +109,8 @@
   self.outputLayer.strokeColor = [_colorInterpolator colorForFrame:self.currentFrame];
   self.outputLayer.lineWidth = [_widthInterpolator floatValueForFrame:self.currentFrame];
   self.outputLayer.opacity = [_opacityInterpolator floatValueForFrame:self.currentFrame];
-    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
-    if (ENABLE_DEBUG_TIMING_LOGGING) [self logString:[NSString stringWithFormat:@"%f StrokeRendererLocalUpdate", timeInterval]];
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    if (ENABLE_DEBUG_TIMING_LOGGING) [printf([NSString stringWithFormat:@"%f StrokeRendererLocalUpdate", timeInterval])];
 }
 
 - (void)rebuildOutputs {

@@ -52,8 +52,8 @@
   centerPoint_DEBUG.borderWidth = 2.f;
   self.outputLayer.fillColor = [colorInterpolator_ colorForFrame:self.currentFrame];
   self.outputLayer.opacity = [opacityInterpolator_ floatValueForFrame:self.currentFrame];
-    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
-    if (ENABLE_DEBUG_TIMING_LOGGING) [self logString:[NSString stringWithFormat:@"%f FillRendererLocalUpdate", timeInterval]];
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    if (ENABLE_DEBUG_TIMING_LOGGING) [printf([NSString stringWithFormat:@"%f FillRendererLocalUpdate", timeInterval])];
 }
 
 - (void)rebuildOutputs {

@@ -161,8 +161,8 @@
   } else {
     _localPath = [_rootNode.outputPath copy];
   }
-    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
-    if (ENABLE_DEBUG_TIMING_LOGGING) [self logString:[NSString stringWithFormat:@"%f RenderGroupLocalUpdate", timeInterval]];
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    if (ENABLE_DEBUG_TIMING_LOGGING) [printf([NSString stringWithFormat:@"%f RenderGroupLocalUpdate", timeInterval])];
 }
 
 - (void)rebuildOutputs {

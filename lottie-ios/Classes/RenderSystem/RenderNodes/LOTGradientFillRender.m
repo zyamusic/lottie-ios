@@ -133,8 +133,8 @@
   _gradientLayer.endPoint = _endPoint;
   _gradientLayer.locations = locationsArray;
   _gradientLayer.colors = colorArray;
-    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
-    if (ENABLE_DEBUG_TIMING_LOGGING) [self logString:[NSString stringWithFormat:@"%f GradientFillLocalUpdate", timeInterval]];
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    if (ENABLE_DEBUG_TIMING_LOGGING) [printf([NSString stringWithFormat:@"%f GradientFillLocalUpdate", timeInterval])];
 }
 
 - (void)rebuildOutputs {
