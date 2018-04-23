@@ -240,7 +240,7 @@
   }
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     NSString *className = NSStringFromClass([_rootNode class]);
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroupLocalUpdate,%s\n", timeInterval, className];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroupLocalUpdate,%s\n", timeInterval, [className UTF8String]];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }
