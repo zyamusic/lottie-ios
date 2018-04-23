@@ -111,7 +111,7 @@
   self.outputLayer.opacity = [_opacityInterpolator floatValueForFrame:self.currentFrame];
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f StrokeRendererLocalUpdate", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,StrokeRendererLocalUpdate\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }
