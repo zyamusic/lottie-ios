@@ -362,6 +362,7 @@
 		6445B0D8207E0E5A00D84F6A /* NSValue+Compat.m in Sources */ = {isa = PBXBuildFile; fileRef = 481A4ADE1E4A78A0003CF62B /* NSValue+Compat.m */; };
 		6445B0D9207E0E5E00D84F6A /* UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 481A4AE21E4A78A0003CF62B /* UIColor.m */; };
 		6445B0DA207E0EA700D84F6A /* LOTValueCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 62A62B491FE48220001A2C2F /* LOTValueCallback.m */; };
+		7F6E8181208E562A00686879 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6E8180208E562A00686879 /* Logging.swift */; };
 		847709411E875369009CE1B5 /* LOTLayerGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 484EBA241E57898D00D4CAD9 /* LOTLayerGroup.m */; };
 		84FE13081E4C1553009B157C /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 481A4A3E1E4A7885003CF62B /* UIColor+Expanded.m */; };
 		84FE130A1E4C1553009B157C /* LOTLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 481A4A431E4A7885003CF62B /* LOTLayer.m */; };
@@ -677,6 +678,7 @@
 		62E27B491F3115AF0098420E /* LOTAnimationCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOTAnimationCache.m; sourceTree = "<group>"; };
 		62E4703A20000C9A000C97B5 /* LOTValueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LOTValueDelegate.h; sourceTree = "<group>"; };
 		6445B0D5207E0D4D00D84F6A /* libLottie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLottie.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F6E8180208E562A00686879 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		84FE12EF1E4C1485009B157C /* libLottie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLottie.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C5379761FB471D100C1BC65 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE498E3B1F336A3B00D1DFCD /* LOTCacheProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOTCacheProvider.m; sourceTree = "<group>"; };
@@ -958,6 +960,7 @@
 				481A4A571E4A7885003CF62B /* Private */,
 				62CA59C31E3C179F002D7188 /* PublicHeaders */,
 				62CA59BC1E3C173B002D7188 /* Info.plist */,
+				7F6E8180208E562A00686879 /* Logging.swift */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -1298,6 +1301,7 @@
 				TargetAttributes = {
 					62CA59B71E3C173B002D7188 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
 					6445B088207E0D4D00D84F6A = {
@@ -1401,6 +1405,7 @@
 				62A62B4C1FE48220001A2C2F /* LOTValueCallback.m in Sources */,
 				481A4AAD1E4A7885003CF62B /* LOTMask.m in Sources */,
 				62BFC2EF1F14298D0068A342 /* LOTPathAnimator.m in Sources */,
+				7F6E8181208E562A00686879 /* Logging.swift in Sources */,
 				622F762E1F2A8CBA00269858 /* LOTShapeStar.m in Sources */,
 				62ACB6C7200030BB006EDE2D /* LOTInterpolatorCallback.m in Sources */,
 				484EBA181E565AF700D4CAD9 /* LOTAsset.m in Sources */,
@@ -1793,6 +1798,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1806,6 +1812,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.airbnb.Lottie;
 				PRODUCT_NAME = Lottie;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WARNING_CFLAGS = "";
 			};
 			name = Debug;
@@ -1814,6 +1822,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1827,6 +1836,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.airbnb.Lottie;
 				PRODUCT_NAME = Lottie;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				WARNING_CFLAGS = "";
 			};
 			name = Release;
