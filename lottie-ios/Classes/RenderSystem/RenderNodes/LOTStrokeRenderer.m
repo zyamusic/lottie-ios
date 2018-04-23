@@ -110,7 +110,11 @@
   self.outputLayer.lineWidth = [_widthInterpolator floatValueForFrame:self.currentFrame];
   self.outputLayer.opacity = [_opacityInterpolator floatValueForFrame:self.currentFrame];
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
-    if (ENABLE_DEBUG_TIMING_LOGGING) [printf([NSString stringWithFormat:@"%f StrokeRendererLocalUpdate", timeInterval])];
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f StrokeRendererLocalUpdate", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 - (void)rebuildOutputs {

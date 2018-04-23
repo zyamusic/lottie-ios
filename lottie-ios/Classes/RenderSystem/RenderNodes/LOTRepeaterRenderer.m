@@ -100,7 +100,10 @@
   _replicatorLayer.instanceAlphaOffset = opacityStep;
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    if (ENABLE_DEBUG_TIMING_LOGGING) [printf([NSString stringWithFormat:@"%f RepeaterRendererLocalUpdate", timeInterval])];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f RepeaterRendererLocalUpdate", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 @end

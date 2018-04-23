@@ -53,7 +53,10 @@
   self.outputLayer.fillColor = [colorInterpolator_ colorForFrame:self.currentFrame];
   self.outputLayer.opacity = [opacityInterpolator_ floatValueForFrame:self.currentFrame];
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
-    if (ENABLE_DEBUG_TIMING_LOGGING) [printf([NSString stringWithFormat:@"%f FillRendererLocalUpdate", timeInterval])];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f FillRendererLocalUpdate", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 - (void)rebuildOutputs {
