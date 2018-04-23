@@ -69,56 +69,133 @@
   LOTAnimatorNode *previousNode = nil;
   LOTShapeTransform *transform;
   for (id item in contents) {
+      NSDate *start = [NSDate date];
     if ([item isKindOfClass:[LOTShapeFill class]]) {
       LOTFillRenderer *fillRenderer = [[LOTFillRenderer alloc] initWithInputNode:previousNode
                                                                        shapeFill:(LOTShapeFill *)item];
       [self.containerLayer insertSublayer:fillRenderer.outputLayer atIndex:0];
       previousNode = fillRenderer;
+        NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+        
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeFill\n", timeInterval];
+        if (ENABLE_DEBUG_TIMING_LOGGING) {
+            printf("%s", [outputStr UTF8String]);
+        }
     } else if ([item isKindOfClass:[LOTShapeStroke class]]) {
       LOTStrokeRenderer *strokRenderer = [[LOTStrokeRenderer alloc] initWithInputNode:previousNode
                                                                           shapeStroke:(LOTShapeStroke *)item];
       [self.containerLayer insertSublayer:strokRenderer.outputLayer atIndex:0];
       previousNode = strokRenderer;
+        NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+        
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeStroke\n", timeInterval];
+        if (ENABLE_DEBUG_TIMING_LOGGING) {
+            printf("%s", [outputStr UTF8String]);
+        }
     } else if ([item isKindOfClass:[LOTShapePath class]]) {
       LOTPathAnimator *pathAnimator = [[LOTPathAnimator alloc] initWithInputNode:previousNode
                                                                        shapePath:(LOTShapePath *)item];
       previousNode = pathAnimator;
+        NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+        
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapePath\n", timeInterval];
+        if (ENABLE_DEBUG_TIMING_LOGGING) {
+            printf("%s", [outputStr UTF8String]);
+        }
     } else if ([item isKindOfClass:[LOTShapeRectangle class]]) {
       LOTRoundedRectAnimator *rectAnimator = [[LOTRoundedRectAnimator alloc] initWithInputNode:previousNode
                                                                                 shapeRectangle:(LOTShapeRectangle *)item];
       previousNode = rectAnimator;
+        NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+        
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeRectangle\n", timeInterval];
+        if (ENABLE_DEBUG_TIMING_LOGGING) {
+            printf("%s", [outputStr UTF8String]);
+        }
     } else if ([item isKindOfClass:[LOTShapeCircle class]]) {
       LOTCircleAnimator *circleAnimator = [[LOTCircleAnimator alloc] initWithInputNode:previousNode
                                                                            shapeCircle:(LOTShapeCircle *)item];
       previousNode = circleAnimator;
+        NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+        
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeCircle\n", timeInterval];
+        if (ENABLE_DEBUG_TIMING_LOGGING) {
+            printf("%s", [outputStr UTF8String]);
+        }
     } else if ([item isKindOfClass:[LOTShapeGroup class]]) {
       LOTShapeGroup *shapeGroup = (LOTShapeGroup *)item;
       LOTRenderGroup *renderGroup = [[LOTRenderGroup alloc] initWithInputNode:previousNode contents:shapeGroup.items keyname:shapeGroup.keyname];
       [self.containerLayer insertSublayer:renderGroup.containerLayer atIndex:0];
       previousNode = renderGroup;
+        NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+        
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeGroup\n", timeInterval];
+        if (ENABLE_DEBUG_TIMING_LOGGING) {
+            printf("%s", [outputStr UTF8String]);
+        }
     } else if ([item isKindOfClass:[LOTShapeTransform class]]) {
       transform = (LOTShapeTransform *)item;
+        NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+        
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeTransform\n", timeInterval];
+        if (ENABLE_DEBUG_TIMING_LOGGING) {
+            printf("%s", [outputStr UTF8String]);
+        }
     } else if ([item isKindOfClass:[LOTShapeTrimPath class]]) {
       LOTTrimPathNode *trim = [[LOTTrimPathNode alloc] initWithInputNode:previousNode trimPath:(LOTShapeTrimPath *)item];
       previousNode = trim;
+        NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+        
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeTrimPath\n", timeInterval];
+        if (ENABLE_DEBUG_TIMING_LOGGING) {
+            printf("%s", [outputStr UTF8String]);
+        }
     } else if ([item isKindOfClass:[LOTShapeStar class]]) {
       LOTShapeStar *star = (LOTShapeStar *)item;
       if (star.type == LOTPolystarShapeStar) {
         LOTPolystarAnimator *starAnimator = [[LOTPolystarAnimator alloc] initWithInputNode:previousNode shapeStar:star];
         previousNode = starAnimator;
+          NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+          
+          NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeStar\n", timeInterval];
+          if (ENABLE_DEBUG_TIMING_LOGGING) {
+              printf("%s", [outputStr UTF8String]);
+          }
       }
       if (star.type == LOTPolystarShapePolygon) {
+          
         LOTPolygonAnimator *polygonAnimator = [[LOTPolygonAnimator alloc] initWithInputNode:previousNode shapePolygon:star];
         previousNode = polygonAnimator;
+          
+          NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+          
+          NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTPolystarShapePolygon\n", timeInterval];
+          if (ENABLE_DEBUG_TIMING_LOGGING) {
+              printf("%s", [outputStr UTF8String]);
+          }
       }
     } else if ([item isKindOfClass:[LOTShapeGradientFill class]]) {
       LOTGradientFillRender *gradientFill = [[LOTGradientFillRender alloc] initWithInputNode:previousNode shapeGradientFill:(LOTShapeGradientFill *)item];
       previousNode = gradientFill;
+        
+        NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+        
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeGradientFill\n", timeInterval];
+        if (ENABLE_DEBUG_TIMING_LOGGING) {
+            printf("%s", [outputStr UTF8String]);
+        }
       [self.containerLayer insertSublayer:gradientFill.outputLayer atIndex:0];
     } else if ([item isKindOfClass:[LOTShapeRepeater class]]) {
       LOTRepeaterRenderer *repeater = [[LOTRepeaterRenderer alloc] initWithInputNode:previousNode shapeRepeater:(LOTShapeRepeater *)item];
       previousNode = repeater;
       [self.containerLayer insertSublayer:repeater.outputLayer atIndex:0];
+        
+        NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+        
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeRepeater\n", timeInterval];
+        if (ENABLE_DEBUG_TIMING_LOGGING) {
+            printf("%s", [outputStr UTF8String]);
+        }
     }
   }
   if (transform) {
