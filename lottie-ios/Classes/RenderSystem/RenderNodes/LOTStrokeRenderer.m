@@ -9,6 +9,7 @@
 #import "LOTStrokeRenderer.h"
 #import "LOTColorInterpolator.h"
 #import "LOTNumberInterpolator.h"
+#import "LOTHelpers.h"
 
 @implementation LOTStrokeRenderer {
   LOTColorInterpolator *_colorInterpolator;
@@ -103,10 +104,13 @@
 }
 
 - (void)performLocalUpdate {
+    NSDate *start = [NSDate date];
   self.outputLayer.lineDashPhase = [_dashOffsetInterpolator floatValueForFrame:self.currentFrame];
   self.outputLayer.strokeColor = [_colorInterpolator colorForFrame:self.currentFrame];
   self.outputLayer.lineWidth = [_widthInterpolator floatValueForFrame:self.currentFrame];
   self.outputLayer.opacity = [_opacityInterpolator floatValueForFrame:self.currentFrame];
+    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
+    if (ENABLE_DEBUG_TIMING_LOGGING) [self logString:[NSString stringWithFormat:@"%f StrokeRendererLocalUpdate", timeInterval]];
 }
 
 - (void)rebuildOutputs {

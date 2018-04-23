@@ -85,6 +85,7 @@
 }
 
 - (void)performLocalUpdate {
+    NSDate *start = [NSDate date];
   centerPoint_DEBUG.backgroundColor =  [UIColor greenColor].CGColor;
   centerPoint_DEBUG.borderColor = [UIColor lightGrayColor].CGColor;
   centerPoint_DEBUG.borderWidth = 2.f;
@@ -97,6 +98,8 @@
   CGFloat opacityStep = (endOpacity - startOpacity) / copies;
   _instanceLayer.opacity = startOpacity;
   _replicatorLayer.instanceAlphaOffset = opacityStep;
+    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
+    if (ENABLE_DEBUG_TIMING_LOGGING) [self logString:[NSString stringWithFormat:@"%f RepeaterRendererLocalUpdate", timeInterval]];
 }
 
 @end

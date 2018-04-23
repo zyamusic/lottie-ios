@@ -23,6 +23,7 @@
 #import "LOTGradientFillRender.h"
 #import "LOTRepeaterRenderer.h"
 #import "LOTShapeRepeater.h"
+#import "LOTHelpers.h"
 
 @implementation LOTRenderGroup {
   LOTAnimatorNode *_rootNode;
@@ -146,6 +147,7 @@
 }
 
 - (void)performLocalUpdate {
+    NSDate *start = [NSDate date];
   if (_opacityInterpolator) {
     self.containerLayer.opacity = [_opacityInterpolator floatValueForFrame:self.currentFrame];
   }
@@ -159,6 +161,8 @@
   } else {
     _localPath = [_rootNode.outputPath copy];
   }
+    NSTimeInterval timeInterval = [start timeIntervalSinceNow];
+    if (ENABLE_DEBUG_TIMING_LOGGING) [self logString:[NSString stringWithFormat:@"%f RenderGroupLocalUpdate", timeInterval]];
 }
 
 - (void)rebuildOutputs {
