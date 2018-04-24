@@ -8,16 +8,25 @@
 
 #import "LOTPathInterpolator.h"
 #import "CGGeometry+LOTAdditions.h"
+#import "LOTHelpers.h"
 
 @implementation LOTPathInterpolator
 
 - (LOTBezierPath *)pathForFrame:(NSNumber *)frame cacheLengths:(BOOL)cacheLengths {
+    NSDate *start = [NSDate date];
   CGFloat progress = [self progressForFrame:frame];
   if (self.hasDelegateOverride) {
     CGPathRef callBackPath = [self.delegate pathForFrame:frame.floatValue
                                            startKeyframe:self.leadingKeyframe.keyframeTime.floatValue
                                              endKeyframe:self.trailingKeyframe.keyframeTime.floatValue
                                     interpolatedProgress:progress];
+      
+      NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+      
+      NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPathInterpolator,pathForFrame\n", timeInterval];
+      if (ENABLE_DEBUG_TIMING_LOGGING) {
+          printf("%s", [outputStr UTF8String]);
+      }
     return [LOTBezierPath pathWithCGPath:callBackPath];
   }
 
@@ -65,7 +74,12 @@
     [returnPath LOT_addCurveToPoint:startPoint controlPoint1:cp3 controlPoint2:startInTangent];
     [returnPath LOT_closePath];
   }
-
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPathInterpolator,pathForFrame\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
   return returnPath;
 }
 

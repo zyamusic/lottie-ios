@@ -12,6 +12,7 @@
 #import "LOTNumberInterpolator.h"
 #import "LOTBezierPath.h"
 #import "CGGeometry+LOTAdditions.h"
+#import "LOTHelpers.h"
 
 const CGFloat kPOLYGON_MAGIC_NUMBER = .25f;
 
@@ -53,6 +54,7 @@ const CGFloat kPOLYGON_MAGIC_NUMBER = .25f;
 }
 
 - (void)performLocalUpdate {
+    NSDate *start = [NSDate date];
   CGFloat outerRadius = [_outerRadiusInterpolator floatValueForFrame:self.currentFrame];
   CGFloat outerRoundness = [_outerRoundnessInterpolator floatValueForFrame:self.currentFrame] / 100.f;
   CGFloat points = [_pointsInterpolator floatValueForFrame:self.currentFrame];
@@ -105,6 +107,13 @@ const CGFloat kPOLYGON_MAGIC_NUMBER = .25f;
   [path LOT_closePath];
   [path LOT_applyTransform:CGAffineTransformMakeTranslation(position.x, position.y)];
   self.localPath = path;
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPolygonAnimator,performLocalUpdate\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 @end

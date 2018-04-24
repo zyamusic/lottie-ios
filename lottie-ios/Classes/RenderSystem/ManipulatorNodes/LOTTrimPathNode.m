@@ -12,6 +12,7 @@
 #import "LOTCircleAnimator.h"
 #import "LOTRoundedRectAnimator.h"
 #import "LOTRenderGroup.h"
+#import "LOTHelpers.h"
 
 @implementation LOTTrimPathNode {
   LOTNumberInterpolator *_startInterpolator;
@@ -50,6 +51,7 @@
 - (BOOL)updateWithFrame:(NSNumber *)frame
       withModifierBlock:(void (^ _Nullable)(LOTAnimatorNode * _Nonnull))modifier
        forceLocalUpdate:(BOOL)forceUpdate {
+    NSDate *start = [NSDate date];
   BOOL localUpdate = [self needsUpdateForFrame:frame];
   [self forceSetCurrentFrame:frame];
   if (localUpdate) {
@@ -70,7 +72,13 @@
     }
     
   } forceLocalUpdate:(localUpdate || forceUpdate)];
-  
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTTrimPathNode,updateWithFrame\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
   return inputUpdated;
 }
 

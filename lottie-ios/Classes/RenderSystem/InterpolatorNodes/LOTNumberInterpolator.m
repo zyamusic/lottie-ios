@@ -8,10 +8,12 @@
 
 #import "LOTNumberInterpolator.h"
 #import "CGGeometry+LOTAdditions.h"
+#import "LOTHelpers.h"
 
 @implementation LOTNumberInterpolator
 
 - (CGFloat)floatValueForFrame:(NSNumber *)frame {
+    NSDate *start = [NSDate date];
   CGFloat progress = [self progressForFrame:frame];
   CGFloat returnValue;
   if (progress == 0) {
@@ -22,6 +24,13 @@
     returnValue = LOT_RemapValue(progress, 0, 1, self.leadingKeyframe.floatValue, self.trailingKeyframe.floatValue);
   }
   if (self.hasDelegateOverride) {
+      
+      NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+      
+      NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTNumberInterpolator,floatValueForFrame\n", timeInterval];
+      if (ENABLE_DEBUG_TIMING_LOGGING) {
+          printf("%s", [outputStr UTF8String]);
+      }
     return [self.delegate floatValueForFrame:frame.floatValue
                                startKeyframe:self.leadingKeyframe.keyframeTime.floatValue
                                  endKeyframe:self.trailingKeyframe.keyframeTime.floatValue
@@ -30,7 +39,12 @@
                                     endValue:self.trailingKeyframe.floatValue
                                 currentValue:returnValue];
   }
-
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTNumberInterpolator,floatValueForFrame\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
   return returnValue;
 }
 

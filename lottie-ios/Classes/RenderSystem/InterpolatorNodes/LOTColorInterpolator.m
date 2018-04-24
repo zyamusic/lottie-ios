@@ -9,10 +9,12 @@
 #import "LOTColorInterpolator.h"
 #import "LOTPlatformCompat.h"
 #import "UIColor+Expanded.h"
+#import "LOTHelpers.h"
 
 @implementation LOTColorInterpolator
 
 - (CGColorRef)colorForFrame:(NSNumber *)frame {
+    NSDate *start = [NSDate date];
   CGFloat progress = [self progressForFrame:frame];
   UIColor *returnColor;
 
@@ -24,6 +26,13 @@
     returnColor = [UIColor LOT_colorByLerpingFromColor:self.leadingKeyframe.colorValue toColor:self.trailingKeyframe.colorValue amount:progress];
   }
   if (self.hasDelegateOverride) {
+      
+      NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+      
+      NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTColorInterpolator,colorForFrame\n", timeInterval];
+      if (ENABLE_DEBUG_TIMING_LOGGING) {
+          printf("%s", [outputStr UTF8String]);
+      }
     return [self.delegate colorForFrame:frame.floatValue
                           startKeyframe:self.leadingKeyframe.keyframeTime.floatValue
                             endKeyframe:self.trailingKeyframe.keyframeTime.floatValue
@@ -32,7 +41,12 @@
                                endColor:self.trailingKeyframe.colorValue.CGColor
                            currentColor:returnColor.CGColor];
   }
-
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTColorInterpolator,colorForFrame\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
   return returnColor.CGColor;
 }
 

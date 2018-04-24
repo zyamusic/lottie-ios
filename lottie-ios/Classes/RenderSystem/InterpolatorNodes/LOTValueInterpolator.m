@@ -8,6 +8,7 @@
 
 #import "LOTValueInterpolator.h"
 #import "CGGeometry+LOTAdditions.h"
+#import "LOTHelpers.h"
 
 @interface LOTValueInterpolator ()
 
@@ -59,6 +60,7 @@
 }
 
 - (void)updateKeyframeSpanForFrame:(NSNumber *)frame {
+    NSDate *start = [NSDate date];
   if (self.leadingKeyframe == nil &&
       self.trailingKeyframe == nil) {
     // Set Initial Keyframes
@@ -125,9 +127,17 @@
     self.leadingKeyframe = testLeading;
     self.trailingKeyframe = testTrailing;
   }
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTValueInterpolator,updateKeyframeSpanForFrame\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 - (CGFloat)progressForFrame:(NSNumber *)frame {
+    NSDate *start = [NSDate date];
   [self updateKeyframeSpanForFrame:frame];
   // At this point frame definitely exists between leading and trailing keyframes
   if (self.leadingKeyframe.keyframeTime == frame) {
@@ -156,7 +166,13 @@
     // Bezier Time Curve
     progession = LOT_CubicBezeirInterpolate(CGPointMake(0, 0), self.leadingKeyframe.outTangent, self.trailingKeyframe.inTangent, CGPointMake(1, 1), progession);
   }
-  
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTValueInterpolator,progressForFrame\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
   return progession;
 }
 

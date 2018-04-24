@@ -11,6 +11,7 @@
 #import "LOTNumberInterpolator.h"
 #import "LOTBezierPath.h"
 #import "CGGeometry+LOTAdditions.h"
+#import "LOTHelpers.h"
 
 const CGFloat kPOLYSTAR_MAGIC_NUMBER = .47829f;
 
@@ -60,6 +61,7 @@ const CGFloat kPOLYSTAR_MAGIC_NUMBER = .47829f;
 }
 
 - (void)performLocalUpdate {
+    NSDate *start = [NSDate date];
   CGFloat outerRadius = [_outerRadiusInterpolator floatValueForFrame:self.currentFrame];
   CGFloat innerRadius = [_innerRadiusInterpolator floatValueForFrame:self.currentFrame];
   CGFloat outerRoundness = [_outerRoundnessInterpolator floatValueForFrame:self.currentFrame] / 100.f;
@@ -151,6 +153,13 @@ const CGFloat kPOLYSTAR_MAGIC_NUMBER = .47829f;
   [path LOT_closePath];
   [path LOT_applyTransform:CGAffineTransformMakeTranslation(position.x, position.y)];
   self.localPath = path;
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPolystarAnimator,performLocalUpdate\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 @end

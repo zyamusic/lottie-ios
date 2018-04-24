@@ -10,6 +10,7 @@
 #import "LOTPointInterpolator.h"
 #import "LOTNumberInterpolator.h"
 #import "CGGeometry+LOTAdditions.h"
+#import "LOTHelpers.h"
 
 @implementation LOTRoundedRectAnimator {
   LOTPointInterpolator *_centerInterpolator;
@@ -104,6 +105,7 @@
 }
 
 - (void)performLocalUpdate {
+    NSDate *start = [NSDate date];
   CGFloat cornerRadius = [_cornerRadiusInterpolator floatValueForFrame:self.currentFrame];
   CGPoint size = [_sizeInterpolator pointValueForFrame:self.currentFrame];
   CGPoint position = [_centerInterpolator pointValueForFrame:self.currentFrame];
@@ -142,6 +144,13 @@
   }
   [path1 LOT_closePath];
   self.localPath = path1;
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRoundedRectAnimator,performLocalUpdate\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 @end

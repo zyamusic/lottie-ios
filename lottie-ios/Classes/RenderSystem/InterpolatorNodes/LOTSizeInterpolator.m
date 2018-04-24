@@ -9,10 +9,13 @@
 #import "LOTPlatformCompat.h"
 #import "LOTSizeInterpolator.h"
 #import "CGGeometry+LOTAdditions.h"
+#import "LOTHelpers.h"
+
 
 @implementation LOTSizeInterpolator
 
 - (CGSize)sizeValueForFrame:(NSNumber *)frame {
+    NSDate *start = [NSDate date];
   CGFloat progress = [self progressForFrame:frame];
   CGSize returnSize;
   if (progress == 0) {
@@ -24,6 +27,13 @@
                             LOT_RemapValue(progress, 0, 1, self.leadingKeyframe.sizeValue.height, self.trailingKeyframe.sizeValue.height));
   }
   if (self.hasDelegateOverride) {
+      
+      NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+      
+      NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTSizeInterpolator,sizeValueForFrame\n", timeInterval];
+      if (ENABLE_DEBUG_TIMING_LOGGING) {
+          printf("%s", [outputStr UTF8String]);
+      }
     return [self.delegate sizeForFrame:frame.floatValue
                          startKeyframe:self.leadingKeyframe.keyframeTime.floatValue
                            endKeyframe:self.trailingKeyframe.keyframeTime.floatValue
@@ -31,6 +41,13 @@
                                endSize:self.trailingKeyframe.sizeValue
                            currentSize:returnSize];
   }
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTSizeInterpolator,sizeValueForFrame\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
   return returnSize;
 }
 

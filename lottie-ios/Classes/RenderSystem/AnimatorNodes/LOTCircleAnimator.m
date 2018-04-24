@@ -8,6 +8,7 @@
 
 #import "LOTCircleAnimator.h"
 #import "LOTPointInterpolator.h"
+#import "LOTHelpers.h"
 
 const CGFloat kLOTEllipseControlPointPercentage = 0.55228;
 
@@ -38,6 +39,7 @@ const CGFloat kLOTEllipseControlPointPercentage = 0.55228;
 }
 
 - (void)performLocalUpdate {
+    NSDate *start = [NSDate date];
   // Unfortunately we HAVE to manually build out the ellipse.
   // Every Apple method constructs from the 3 o-clock position
   // After effects constructs from the Noon position.
@@ -72,6 +74,13 @@ const CGFloat kLOTEllipseControlPointPercentage = 0.55228;
   [path LOT_addCurveToPoint:circleQ1 controlPoint1:CGPointMake(circleQ4.x, circleQ4.y - cpH) controlPoint2:CGPointMake(circleQ1.x - cpW, circleQ1.y)];
 
   self.localPath = path;
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTCircleAnimator,performLocalUpdate\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 @end

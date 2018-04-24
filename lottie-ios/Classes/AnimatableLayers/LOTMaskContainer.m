@@ -9,6 +9,7 @@
 #import "LOTMaskContainer.h"
 #import "LOTPathInterpolator.h"
 #import "LOTNumberInterpolator.h"
+#import "LOTHelpers.h"
 
 @interface LOTMaskNodeLayer : CAShapeLayer
 
@@ -38,6 +39,7 @@
 }
 
 - (void)updateForFrame:(NSNumber *)frame withViewBounds:(CGRect)viewBounds {
+    NSDate *start = [NSDate date];
   if ([self hasUpdateForFrame:frame]) {
     LOTBezierPath *path = [_pathInterpolator pathForFrame:frame cacheLengths:NO];
     
@@ -53,6 +55,13 @@
     }
     
     self.opacity = [_opacityInterpolator floatValueForFrame:frame];
+      
+      NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+      
+      NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTMaskNodeLayer,updateForFrame\n", timeInterval];
+      if (ENABLE_DEBUG_TIMING_LOGGING) {
+          printf("%s", [outputStr UTF8String]);
+      }
   }
 }
 

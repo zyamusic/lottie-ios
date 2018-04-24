@@ -8,6 +8,7 @@
 
 #import "LOTPathAnimator.h"
 #import "LOTPathInterpolator.h"
+#import "LOTHelpers.h"
 
 @implementation LOTPathAnimator {
   LOTShapePath *_pathConent;
@@ -33,7 +34,15 @@
 }
 
 - (void)performLocalUpdate {
+    NSDate *start = [NSDate date];
   self.localPath = [_interpolator pathForFrame:self.currentFrame cacheLengths:self.pathShouldCacheLengths];
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPathAnimator,performLocalUpdate\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 @end

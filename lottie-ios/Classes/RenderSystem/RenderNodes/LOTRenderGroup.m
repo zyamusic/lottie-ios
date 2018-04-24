@@ -78,7 +78,7 @@
       previousNode = fillRenderer;
         NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
         
-        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeFill\n", timeInterval];
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup,LOTShapeFill\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
             printf("%s", [outputStr UTF8String]);
         }
@@ -89,7 +89,7 @@
       previousNode = strokRenderer;
         NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
         
-        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeStroke\n", timeInterval];
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup,LOTShapeStroke\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
             printf("%s", [outputStr UTF8String]);
         }
@@ -99,7 +99,7 @@
       previousNode = pathAnimator;
         NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
         
-        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapePath\n", timeInterval];
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup,LOTShapePath\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
             printf("%s", [outputStr UTF8String]);
         }
@@ -109,7 +109,7 @@
       previousNode = rectAnimator;
         NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
         
-        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeRectangle\n", timeInterval];
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup,LOTShapeRectangle\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
             printf("%s", [outputStr UTF8String]);
         }
@@ -119,7 +119,7 @@
       previousNode = circleAnimator;
         NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
         
-        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeCircle\n", timeInterval];
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup,LOTShapeCircle\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
             printf("%s", [outputStr UTF8String]);
         }
@@ -130,7 +130,7 @@
       previousNode = renderGroup;
         NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
         
-        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeGroup\n", timeInterval];
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup,LOTShapeGroup\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
             printf("%s", [outputStr UTF8String]);
         }
@@ -138,7 +138,7 @@
       transform = (LOTShapeTransform *)item;
         NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
         
-        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeTransform\n", timeInterval];
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup,LOTShapeTransform\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
             printf("%s", [outputStr UTF8String]);
         }
@@ -147,7 +147,7 @@
       previousNode = trim;
         NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
         
-        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeTrimPath\n", timeInterval];
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup,LOTShapeTrimPath\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
             printf("%s", [outputStr UTF8String]);
         }
@@ -158,7 +158,7 @@
         previousNode = starAnimator;
           NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
           
-          NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeStar\n", timeInterval];
+          NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup,LOTShapeStar\n", timeInterval];
           if (ENABLE_DEBUG_TIMING_LOGGING) {
               printf("%s", [outputStr UTF8String]);
           }
@@ -170,7 +170,7 @@
           
           NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
           
-          NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTPolystarShapePolygon\n", timeInterval];
+          NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup,LOTPolystarShapePolygon\n", timeInterval];
           if (ENABLE_DEBUG_TIMING_LOGGING) {
               printf("%s", [outputStr UTF8String]);
           }
@@ -181,7 +181,7 @@
         
         NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
         
-        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeGradientFill\n", timeInterval];
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup,LOTShapeGradientFill\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
             printf("%s", [outputStr UTF8String]);
         }
@@ -193,7 +193,7 @@
         
         NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
         
-        NSString *outputStr  = [NSString stringWithFormat:@"%f,RenderGroup,LOTShapeRepeater\n", timeInterval];
+        NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup,LOTShapeRepeater\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
             printf("%s", [outputStr UTF8String]);
         }

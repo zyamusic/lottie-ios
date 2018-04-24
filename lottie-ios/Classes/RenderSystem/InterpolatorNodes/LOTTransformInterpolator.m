@@ -7,6 +7,7 @@
 //
 
 #import "LOTTransformInterpolator.h"
+#import "LOTHelpers.h"
 
 // TODO BW Perf update, Cache transform
 
@@ -20,6 +21,7 @@
 }
 
 + (instancetype)transformForLayer:(LOTLayer *)layer {
+    NSDate *start = [NSDate date];
   LOTTransformInterpolator *interpolator = nil;
   if (layer.position) {
     interpolator = [[LOTTransformInterpolator alloc] initWithPosition:layer.position.keyframes
@@ -34,6 +36,13 @@
                                                                  scale:layer.scale.keyframes];
   }
   interpolator.parentKeyName = [layer.layerName copy];
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTTransformInterpolator,transformForLayer\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
   return interpolator;
 }
 
@@ -101,6 +110,7 @@
 }
 
 - (CATransform3D)transformForFrame:(NSNumber *)frame {
+    NSDate *start = [NSDate date];
   CATransform3D baseXform = CATransform3DIdentity;
   if (_inputNode) {
     baseXform = [_inputNode transformForFrame:frame];
@@ -121,6 +131,13 @@
   CATransform3D rotateXform = CATransform3DRotate(translateXform, rotation, 0, 0, 1);
   CATransform3D scaleXform = CATransform3DScale(rotateXform, scale.width, scale.height, 1);
   CATransform3D anchorXform = CATransform3DTranslate(scaleXform, -1 * anchor.x, -1 * anchor.y, 0);
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTTransformInterpolator,transformForFrame\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
   return anchorXform;
 }
 

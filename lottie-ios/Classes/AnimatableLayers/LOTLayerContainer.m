@@ -240,6 +240,7 @@
 }
 
 - (void)displayWithFrame:(NSNumber *)frame forceUpdate:(BOOL)forceUpdate {
+    NSDate *start = [NSDate date];
   NSNumber *newFrame = @(frame.floatValue / self.timeStretchFactor.floatValue);
   if (ENABLE_DEBUG_LOGGING) NSLog(@"View %@ Displaying Frame %@, with local time %@", self, frame, newFrame);
   BOOL hidden = NO;
@@ -259,6 +260,13 @@
   }
   [_contentsGroup updateWithFrame:newFrame withModifierBlock:nil forceLocalUpdate:forceUpdate];
   _maskLayer.currentFrame = newFrame;
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTLayerContainer,displayWithFrame\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 - (void)setViewportBounds:(CGRect)viewportBounds {

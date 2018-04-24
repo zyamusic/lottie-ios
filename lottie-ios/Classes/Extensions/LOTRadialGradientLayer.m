@@ -8,6 +8,7 @@
 
 #import "LOTRadialGradientLayer.h"
 #import "CGGeometry+LOTAdditions.h"
+#import "LOTHelpers.h"
 
 @implementation LOTRadialGradientLayer
 
@@ -50,6 +51,7 @@
 }
 
 - (void)drawInContext:(CGContextRef)ctx {
+    NSDate *start = [NSDate date];
   if (self.colors.count == 0) {
     return;
   }
@@ -84,6 +86,13 @@
   }
   
   CGGradientRelease(gradient);
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRadialGradientLayer,drawInContext\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 @end

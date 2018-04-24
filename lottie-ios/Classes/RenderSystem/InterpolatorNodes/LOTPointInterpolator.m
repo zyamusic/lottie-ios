@@ -8,10 +8,12 @@
 
 #import "LOTPointInterpolator.h"
 #import "CGGeometry+LOTAdditions.h"
+#import "LOTHelpers.h"
 
 @implementation LOTPointInterpolator
 
 - (CGPoint)pointValueForFrame:(NSNumber *)frame {
+    NSDate *start = [NSDate date];
   CGFloat progress = [self progressForFrame:frame];
   CGPoint returnPoint;
   if (progress == 0) {
@@ -28,6 +30,13 @@
     returnPoint = LOT_PointInLine(self.leadingKeyframe.pointValue, self.trailingKeyframe.pointValue, progress);
   }
   if (self.hasDelegateOverride) {
+      
+      NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+      
+      NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPointInterpolator,pointValueForFrame\n", timeInterval];
+      if (ENABLE_DEBUG_TIMING_LOGGING) {
+          printf("%s", [outputStr UTF8String]);
+      }
     return [self.delegate pointForFrame:frame.floatValue
                           startKeyframe:self.leadingKeyframe.keyframeTime.floatValue
                             endKeyframe:self.trailingKeyframe.keyframeTime.floatValue
@@ -36,6 +45,13 @@
                                endPoint:self.trailingKeyframe.pointValue
                            currentPoint:returnPoint];
   }
+    
+    NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
+    
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPointInterpolator,pointValueForFrame\n", timeInterval];
+    if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
   return returnPoint;
 }
 
