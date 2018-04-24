@@ -7,6 +7,8 @@
 //
 
 #import "LOTShapeRectangle.h"
+#import <malloc/malloc.h>
+#import "LOTHelpers.h"
 
 @implementation LOTShapeRectangle
 
@@ -15,6 +17,11 @@
   if (self) {
     [self _mapFromJSON:jsonDictionary];
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 
@@ -40,6 +47,11 @@
   }
   NSNumber *reversed = jsonDictionary[@"d"];
   _reversed = (reversed.integerValue == 3);
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 @end

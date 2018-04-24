@@ -7,6 +7,7 @@
 //
 
 #import "LOTShapeTransform.h"
+#import <malloc/malloc.h>
 #import "LOTHelpers.h"
 
 @implementation LOTShapeTransform
@@ -16,6 +17,11 @@
   if (self) {
     [self _mapFromJSON:jsonDictionary];
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 
@@ -69,6 +75,11 @@
   if (hasSkew || hasSkewAxis) {
     NSLog(@"%s: Warning: skew is not supported: %@", __PRETTY_FUNCTION__, name);
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 - (NSString *)description {

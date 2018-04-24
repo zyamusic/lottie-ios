@@ -11,6 +11,7 @@
 #import "LOTAssetGroup.h"
 #import "LOTShapeGroup.h"
 #import "LOTComposition.h"
+#import <malloc/malloc.h>
 #import "LOTHelpers.h"
 #import "LOTMask.h"
 #import "LOTHelpers.h"
@@ -26,6 +27,11 @@
      withAssetGroup:assetGroup
      withFramerate:framerate];
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 
@@ -171,6 +177,11 @@
       }
     }
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 - (NSString *)description {

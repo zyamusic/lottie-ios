@@ -7,6 +7,8 @@
 //
 
 #import "LOTShapeTrimPath.h"
+#import <malloc/malloc.h>
+#import "LOTHelpers.h"
 
 @implementation LOTShapeTrimPath
 
@@ -15,6 +17,11 @@
   if (self) {
     [self _mapFromJSON:jsonDictionary];
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 
@@ -38,6 +45,11 @@
   if (offset) {
     _offset = [[LOTKeyframeGroup alloc] initWithData:offset];
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 @end

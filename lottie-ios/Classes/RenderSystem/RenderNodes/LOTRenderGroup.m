@@ -207,9 +207,9 @@
                                                                          scale:transform.scale.keyframes];
   }
   _rootNode = previousNode;
-    NSString *className = NSStringFromClass([_rootNode class]);
-    NSString *outputStr  = [NSString stringWithFormat:@"%zd,RenderGroupBuildContents,%s\n", malloc_size((__bridge const void *) _rootNode), [className UTF8String]];
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([_rootNode class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,RenderGroupBuildContents,%s\n", malloc_size((__bridge const void *) _rootNode), [className UTF8String]];
         printf("%s", [outputStr UTF8String]);
     }
 }
