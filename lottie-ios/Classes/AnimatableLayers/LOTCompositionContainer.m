@@ -108,7 +108,7 @@
   if (ENABLE_DEBUG_LOGGING) NSLog(@"-------------------- ------------------------------- --------------------");
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTCompositionContainer,displayWithFrame\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTCompositionContainer-displayWithFrame\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }

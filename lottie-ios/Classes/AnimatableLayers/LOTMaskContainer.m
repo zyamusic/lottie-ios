@@ -58,7 +58,7 @@
       
       NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
       
-      NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTMaskNodeLayer,updateForFrame\n", timeInterval];
+      NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTMaskNodeLayer-updateForFrame\n", timeInterval];
       if (ENABLE_DEBUG_TIMING_LOGGING) {
           printf("%s", [outputStr UTF8String]);
       }

@@ -263,7 +263,7 @@
     
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTLayerContainer,displayWithFrame\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTLayerContainer-displayWithFrame\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }

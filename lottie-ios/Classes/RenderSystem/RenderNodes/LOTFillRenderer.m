@@ -53,7 +53,7 @@
   self.outputLayer.fillColor = [colorInterpolator_ colorForFrame:self.currentFrame];
   self.outputLayer.opacity = [opacityInterpolator_ floatValueForFrame:self.currentFrame];
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTFillRenderer,performLocalUpdate\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTFillRenderer-performLocalUpdate\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }

@@ -156,7 +156,7 @@ const CGFloat kPOLYSTAR_MAGIC_NUMBER = .47829f;
     
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPolystarAnimator,performLocalUpdate\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPolystarAnimator-performLocalUpdate\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }

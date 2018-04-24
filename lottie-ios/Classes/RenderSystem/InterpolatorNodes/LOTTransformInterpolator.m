@@ -39,7 +39,7 @@
     
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTTransformInterpolator,transformForLayer\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTTransformInterpolator-transformForLayer\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }
@@ -134,7 +134,7 @@
     
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTTransformInterpolator,transformForFrame\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTTransformInterpolator-transformForFrame\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }

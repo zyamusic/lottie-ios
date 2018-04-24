@@ -33,7 +33,7 @@
       
       NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
       
-      NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPointInterpolator,pointValueForFrame\n", timeInterval];
+      NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPointInterpolator-pointValueForFrame\n", timeInterval];
       if (ENABLE_DEBUG_TIMING_LOGGING) {
           printf("%s", [outputStr UTF8String]);
       }
@@ -48,7 +48,7 @@
     
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPointInterpolator,pointValueForFrame\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPointInterpolator-pointValueForFrame\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }

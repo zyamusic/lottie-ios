@@ -130,7 +130,7 @@
     
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTValueInterpolator,updateKeyframeSpanForFrame\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTValueInterpolator-updateKeyframeSpanForFrame\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }
@@ -169,7 +169,7 @@
     
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTValueInterpolator,progressForFrame\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTValueInterpolator-progressForFrame\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }

@@ -77,7 +77,7 @@ const CGFloat kLOTEllipseControlPointPercentage = 0.55228;
     
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTCircleAnimator,performLocalUpdate\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTCircleAnimator-performLocalUpdate\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }
