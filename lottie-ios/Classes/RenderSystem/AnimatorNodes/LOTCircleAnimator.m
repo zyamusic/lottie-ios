@@ -9,6 +9,7 @@
 #import "LOTCircleAnimator.h"
 #import "LOTPointInterpolator.h"
 #import "LOTHelpers.h"
+#import <malloc/malloc.h>
 
 const CGFloat kLOTEllipseControlPointPercentage = 0.55228;
 
@@ -26,6 +27,11 @@ const CGFloat kLOTEllipseControlPointPercentage = 0.55228;
     _sizeInterpolator = [[LOTPointInterpolator alloc] initWithKeyframes:shapeCircle.size.keyframes];
     _reversed = shapeCircle.reversed;
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithInputNode\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 

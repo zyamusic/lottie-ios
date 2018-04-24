@@ -26,7 +26,7 @@
   }
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
         NSString *className = NSStringFromClass([self class]);
-        NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithLayerJSON\n", malloc_size((__bridge const void *) self), [className UTF8String]];
         printf("%s", [outputStr UTF8String]);
     }
   return self;
@@ -56,7 +56,7 @@
   _layers = layers;
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
         NSString *className = NSStringFromClass([self class]);
-        NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-_mapFromJSON\n", malloc_size((__bridge const void *) self), [className UTF8String]];
         printf("%s", [outputStr UTF8String]);
     }
 }

@@ -15,6 +15,7 @@
 #import "LOTRenderNode.h"
 #import "LOTRenderGroup.h"
 #import "LOTNumberInterpolator.h"
+#import <malloc/malloc.h>
 
 @implementation LOTCompositionContainer {
   NSNumber *_frameOffset;
@@ -50,6 +51,11 @@
 
     [self initializeWithChildGroup:childLayerGroup withAssetGroup:assetGroup];
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithModel\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 

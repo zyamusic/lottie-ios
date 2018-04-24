@@ -13,6 +13,7 @@
 #import "CGGeometry+LOTAdditions.h"
 #import "LOTHelpers.h"
 #import "LOTRadialGradientLayer.h"
+#import <malloc/malloc.h>
 
 @implementation LOTGradientFillRender {
   BOOL _evenOddFillRule;
@@ -74,6 +75,11 @@
       [self.outputLayer addSublayer:centerPoint_DEBUG];
     }
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithInputNode\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 

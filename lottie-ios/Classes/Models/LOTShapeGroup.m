@@ -29,7 +29,7 @@
   }
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
         NSString *className = NSStringFromClass([self class]);
-        NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithJSON\n", malloc_size((__bridge const void *) self), [className UTF8String]];
         printf("%s", [outputStr UTF8String]);
     }
   return self;
@@ -58,7 +58,7 @@
     LOTShapeGroup *group = [[LOTShapeGroup alloc] initWithJSON:itemJSON];
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
-          NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+          NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeGroup\n", malloc_size((__bridge const void *) self), [className UTF8String]];
           printf("%s", [outputStr UTF8String]);
       }
     return group;
@@ -66,7 +66,7 @@
     LOTShapeStroke *stroke = [[LOTShapeStroke alloc] initWithJSON:itemJSON];
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
-          NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+          NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeStroke\n", malloc_size((__bridge const void *) self), [className UTF8String]];
           printf("%s", [outputStr UTF8String]);
       }
     return stroke;
@@ -74,7 +74,7 @@
     LOTShapeFill *fill = [[LOTShapeFill alloc] initWithJSON:itemJSON];
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
-          NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+          NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeFill\n", malloc_size((__bridge const void *) self), [className UTF8String]];
           printf("%s", [outputStr UTF8String]);
       }
     return fill;
@@ -82,7 +82,7 @@
     LOTShapeTransform *transform = [[LOTShapeTransform alloc] initWithJSON:itemJSON];
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
-          NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+          NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeTransform\n", malloc_size((__bridge const void *) self), [className UTF8String]];
           printf("%s", [outputStr UTF8String]);
       }
     return transform;
@@ -90,7 +90,7 @@
     LOTShapePath *path = [[LOTShapePath alloc] initWithJSON:itemJSON];
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
-          NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+          NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapePath\n", malloc_size((__bridge const void *) self), [className UTF8String]];
           printf("%s", [outputStr UTF8String]);
       }
     return path;
@@ -98,7 +98,7 @@
     LOTShapeCircle *circle = [[LOTShapeCircle alloc] initWithJSON:itemJSON];
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
-          NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+          NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeCircle\n", malloc_size((__bridge const void *) self), [className UTF8String]];
           printf("%s", [outputStr UTF8String]);
       }
     return circle;
@@ -106,7 +106,7 @@
     LOTShapeRectangle *rectangle = [[LOTShapeRectangle alloc] initWithJSON:itemJSON];
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
-          NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+          NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeRectangle\n", malloc_size((__bridge const void *) self), [className UTF8String]];
           printf("%s", [outputStr UTF8String]);
       }
     return rectangle;
@@ -114,7 +114,7 @@
     LOTShapeTrimPath *trim = [[LOTShapeTrimPath alloc] initWithJSON:itemJSON];
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
-          NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+          NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeTrimPath\n", malloc_size((__bridge const void *) self), [className UTF8String]];
           printf("%s", [outputStr UTF8String]);
       }
     return trim;
@@ -124,7 +124,7 @@
     LOTShapeGradientFill *gradientFill = [[LOTShapeGradientFill alloc] initWithJSON:itemJSON];
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
-          NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+          NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeGradientFill\n", malloc_size((__bridge const void *) self), [className UTF8String]];
           printf("%s", [outputStr UTF8String]);
       }
     return gradientFill;
@@ -132,7 +132,7 @@
     LOTShapeStar *star = [[LOTShapeStar alloc] initWithJSON:itemJSON];
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
-          NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+          NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeStar\n", malloc_size((__bridge const void *) self), [className UTF8String]];
           printf("%s", [outputStr UTF8String]);
       }
     return star;
@@ -143,7 +143,7 @@
     LOTShapeRepeater *repeater = [[LOTShapeRepeater alloc] initWithJSON:itemJSON];
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
-          NSString *outputStr  = [NSString stringWithFormat:@"%zd,LOTBaseModelInit,%s\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+          NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeRepeater\n", malloc_size((__bridge const void *) self), [className UTF8String]];
           printf("%s", [outputStr UTF8String]);
       }
     return repeater;

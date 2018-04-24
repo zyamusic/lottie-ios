@@ -12,6 +12,7 @@
 #import "LOTBezierPath.h"
 #import "CGGeometry+LOTAdditions.h"
 #import "LOTHelpers.h"
+#import <malloc/malloc.h>
 
 const CGFloat kPOLYSTAR_MAGIC_NUMBER = .47829f;
 
@@ -37,6 +38,11 @@ const CGFloat kPOLYSTAR_MAGIC_NUMBER = .47829f;
     _rotationInterpolator = [[LOTNumberInterpolator alloc] initWithKeyframes:shapeStar.rotation.keyframes];
     _positionInterpolator = [[LOTPointInterpolator alloc] initWithKeyframes:shapeStar.position.keyframes];
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithInputNode\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 

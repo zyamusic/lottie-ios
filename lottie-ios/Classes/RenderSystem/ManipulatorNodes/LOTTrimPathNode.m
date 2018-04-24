@@ -13,6 +13,7 @@
 #import "LOTRoundedRectAnimator.h"
 #import "LOTRenderGroup.h"
 #import "LOTHelpers.h"
+#import <malloc/malloc.h>
 
 @implementation LOTTrimPathNode {
   LOTNumberInterpolator *_startInterpolator;
@@ -33,6 +34,11 @@
     _endInterpolator = [[LOTNumberInterpolator alloc] initWithKeyframes:trimPath.end.keyframes];
     _offsetInterpolator = [[LOTNumberInterpolator alloc] initWithKeyframes:trimPath.offset.keyframes];
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithInputNode\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 

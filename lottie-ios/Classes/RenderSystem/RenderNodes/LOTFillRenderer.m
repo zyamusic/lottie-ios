@@ -10,6 +10,7 @@
 #import "LOTColorInterpolator.h"
 #import "LOTNumberInterpolator.h"
 #import "LOTHelpers.h"
+#import <malloc/malloc.h>
 
 @implementation LOTFillRenderer {
   LOTColorInterpolator *colorInterpolator_;
@@ -33,6 +34,11 @@
     
     self.outputLayer.fillRule = _evenOddFillRule ? @"even-odd" : @"non-zero";
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithInputNode\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 

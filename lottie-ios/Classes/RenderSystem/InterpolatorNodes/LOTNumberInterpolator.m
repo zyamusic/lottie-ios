@@ -9,6 +9,7 @@
 #import "LOTNumberInterpolator.h"
 #import "CGGeometry+LOTAdditions.h"
 #import "LOTHelpers.h"
+#import <malloc/malloc.h>
 
 @implementation LOTNumberInterpolator
 
@@ -43,6 +44,11 @@
     
     NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTNumberInterpolator-floatValueForFrame\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-floatValueForFrame\n", malloc_size((__bridge const void *) self), [className UTF8String]];
         printf("%s", [outputStr UTF8String]);
     }
   return returnValue;

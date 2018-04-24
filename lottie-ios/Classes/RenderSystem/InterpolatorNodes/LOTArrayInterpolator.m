@@ -9,6 +9,7 @@
 #import "LOTArrayInterpolator.h"
 #import "CGGeometry+LOTAdditions.h"
 #import "LOTHelpers.h"
+#import <malloc/malloc.h>
 
 @implementation LOTArrayInterpolator
 
@@ -35,7 +36,11 @@
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }
-
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-numberArrayForFrame\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return returnArray;
 }
 

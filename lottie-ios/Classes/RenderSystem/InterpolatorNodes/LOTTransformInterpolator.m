@@ -8,6 +8,7 @@
 
 #import "LOTTransformInterpolator.h"
 #import "LOTHelpers.h"
+#import <malloc/malloc.h>
 
 // TODO BW Perf update, Cache transform
 
@@ -54,6 +55,11 @@
   if (self) {
     [self initializeWithPositionX:nil positionY:nil position:position rotation:rotation anchor:anchor scale:scale];
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithPosition\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 
@@ -66,6 +72,11 @@
   if (self) {
     [self initializeWithPositionX:positionX positionY:positionY position:nil rotation:rotation anchor:anchor scale:scale];
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithPositionY\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 
@@ -136,6 +147,11 @@
     
     NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTTransformInterpolator-transformForFrame\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initializeWithPositionX\n", malloc_size((__bridge const void *) self), [className UTF8String]];
         printf("%s", [outputStr UTF8String]);
     }
   return anchorXform;

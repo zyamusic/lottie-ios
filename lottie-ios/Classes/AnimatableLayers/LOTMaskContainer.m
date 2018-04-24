@@ -10,6 +10,7 @@
 #import "LOTPathInterpolator.h"
 #import "LOTNumberInterpolator.h"
 #import "LOTHelpers.h"
+#import <malloc/malloc.h>
 
 @interface LOTMaskNodeLayer : CAShapeLayer
 
@@ -35,6 +36,11 @@
     _maskNode = maskNode;
     self.fillColor = [UIColor blueColor].CGColor;
   }
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithMask\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
   return self;
 }
 

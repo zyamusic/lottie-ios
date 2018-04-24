@@ -14,6 +14,7 @@
 #import "LOTHelpers.h"
 #import "LOTMaskContainer.h"
 #import "LOTAsset.h"
+#import <malloc/malloc.h>
 
 #if TARGET_OS_IPHONE || TARGET_OS_SIMULATOR
 #import "LOTCacheProvider.h"
@@ -135,6 +136,11 @@
 - (void)buildContents:(NSArray *)contents {
   _contentsGroup = [[LOTRenderGroup alloc] initWithInputNode:nil contents:contents keyname:_layerName];
   [_wrapperLayer addSublayer:_contentsGroup.containerLayer];
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        NSString *className = NSStringFromClass([self class]);
+        NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-buildContents\n", malloc_size((__bridge const void *) self), [className UTF8String]];
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 #if TARGET_OS_IPHONE || TARGET_OS_SIMULATOR
