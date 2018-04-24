@@ -24,6 +24,7 @@
 #import "LOTRepeaterRenderer.h"
 #import "LOTShapeRepeater.h"
 #import "LOTHelpers.h"
+#import <malloc/malloc.h>
 
 @implementation LOTRenderGroup {
   LOTAnimatorNode *_rootNode;
@@ -206,6 +207,11 @@
                                                                          scale:transform.scale.keyframes];
   }
   _rootNode = previousNode;
+    NSString *className = NSStringFromClass([_rootNode class]);
+    NSString *outputStr  = [NSString stringWithFormat:@"%zd,RenderGroupBuildContents,%s\n", malloc_size((__bridge const void *) _rootNode), [className UTF8String]];
+    if (ENABLE_DEBUG_MEMORY_LOGGING) {
+        printf("%s", [outputStr UTF8String]);
+    }
 }
 
 - (BOOL)needsUpdateForFrame:(NSNumber *)frame {
