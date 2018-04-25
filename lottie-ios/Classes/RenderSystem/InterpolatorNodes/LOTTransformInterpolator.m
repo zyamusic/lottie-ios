@@ -40,9 +40,9 @@
     
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTTransformInterpolator-transformForLayer\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTTransformInterpolator-transformForLayer", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
-        printf("%s,%s", [outputStr UTF8String],[layer.layerName UTF8String]);
+        printf("%s,%s\n", [outputStr UTF8String],[layer.layerName UTF8String]);
     }
   return interpolator;
 }
@@ -58,7 +58,7 @@
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
         NSString *className = NSStringFromClass([self class]);
         NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithPosition\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-        printf("%s,%s", [outputStr UTF8String],[self.parentKeyName UTF8String]);
+        printf("%s,%s\n", [outputStr UTF8String],[self.parentKeyName UTF8String]);
     }
   return self;
 }
@@ -145,7 +145,7 @@
     
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTTransformInterpolator-transformForFrame\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTTransformInterpolator-transformForFrame", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
         printf("%s", [outputStr UTF8String]);
     }

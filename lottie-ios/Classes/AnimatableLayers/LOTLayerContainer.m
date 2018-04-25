@@ -139,7 +139,7 @@
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
         NSString *className = NSStringFromClass([self class]);
         NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-buildContents\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-        printf("%s,%s", [outputStr UTF8String],[self.layerName UTF8String]);
+        printf("%s,%s\n", [outputStr UTF8String],[self.layerName UTF8String]);
     }
 }
 
@@ -269,9 +269,9 @@
     
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTLayerContainer-displayWithFrame\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTLayerContainer-displayWithFrame", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
-        printf("%s,%s", [outputStr UTF8String],[self.layerName UTF8String]);
+        printf("%s,%s\n", [outputStr UTF8String],[self.layerName UTF8String]);
     }
 }
 

@@ -56,7 +56,7 @@
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
         NSString *className = NSStringFromClass([self class]);
         NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithInputNode\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-        printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
+        printf("%s,%s\n", [outputStr UTF8String],[self.keyname UTF8String]);
     }
   return self;
 }
@@ -106,9 +106,9 @@
   _replicatorLayer.instanceAlphaOffset = opacityStep;
     NSTimeInterval timeInterval = fabs([start timeIntervalSinceNow]);
     
-    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRepeaterRenderer-performLocalUpdate\n", timeInterval];
+    NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRepeaterRenderer-performLocalUpdate", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
-        printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
+        printf("%s,%s\n", [outputStr UTF8String],[self.keyname UTF8String]);
     }
 }
 
