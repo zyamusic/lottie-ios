@@ -48,7 +48,7 @@
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
         NSString *className = NSStringFromClass([self class]);
         NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithInputNode\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-        printf("%s", [outputStr UTF8String]);
+        printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
     }
   return self;
 }
@@ -85,7 +85,7 @@
         
         NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-LOTShapeFill\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
-            printf("%s", [outputStr UTF8String]);
+            printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
         }
     } else if ([item isKindOfClass:[LOTShapeStroke class]]) {
       LOTStrokeRenderer *strokRenderer = [[LOTStrokeRenderer alloc] initWithInputNode:previousNode
@@ -96,7 +96,7 @@
         
         NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-LOTShapeStroke\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
-            printf("%s", [outputStr UTF8String]);
+            printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
         }
     } else if ([item isKindOfClass:[LOTShapePath class]]) {
       LOTPathAnimator *pathAnimator = [[LOTPathAnimator alloc] initWithInputNode:previousNode
@@ -106,7 +106,7 @@
         
         NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-LOTShapePath\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
-            printf("%s", [outputStr UTF8String]);
+            printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
         }
     } else if ([item isKindOfClass:[LOTShapeRectangle class]]) {
       LOTRoundedRectAnimator *rectAnimator = [[LOTRoundedRectAnimator alloc] initWithInputNode:previousNode
@@ -116,7 +116,7 @@
         
         NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-LOTShapeRectangle\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
-            printf("%s", [outputStr UTF8String]);
+            printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
         }
     } else if ([item isKindOfClass:[LOTShapeCircle class]]) {
       LOTCircleAnimator *circleAnimator = [[LOTCircleAnimator alloc] initWithInputNode:previousNode
@@ -126,7 +126,7 @@
         
         NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-LOTShapeCircle\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
-            printf("%s", [outputStr UTF8String]);
+            printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
         }
     } else if ([item isKindOfClass:[LOTShapeGroup class]]) {
       LOTShapeGroup *shapeGroup = (LOTShapeGroup *)item;
@@ -137,7 +137,7 @@
         
         NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-LOTShapeGroup\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
-            printf("%s", [outputStr UTF8String]);
+            printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
         }
     } else if ([item isKindOfClass:[LOTShapeTransform class]]) {
       transform = (LOTShapeTransform *)item;
@@ -145,7 +145,7 @@
         
         NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-LOTShapeTransform\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
-            printf("%s", [outputStr UTF8String]);
+            printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
         }
     } else if ([item isKindOfClass:[LOTShapeTrimPath class]]) {
       LOTTrimPathNode *trim = [[LOTTrimPathNode alloc] initWithInputNode:previousNode trimPath:(LOTShapeTrimPath *)item];
@@ -154,7 +154,7 @@
         
         NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-LOTShapeTrimPath\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
-            printf("%s", [outputStr UTF8String]);
+            printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
         }
     } else if ([item isKindOfClass:[LOTShapeStar class]]) {
       LOTShapeStar *star = (LOTShapeStar *)item;
@@ -165,7 +165,7 @@
           
           NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-LOTShapeStar\n", timeInterval];
           if (ENABLE_DEBUG_TIMING_LOGGING) {
-              printf("%s", [outputStr UTF8String]);
+              printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
           }
       }
       if (star.type == LOTPolystarShapePolygon) {
@@ -177,7 +177,7 @@
           
           NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-LOTPolystarShapePolygon\n", timeInterval];
           if (ENABLE_DEBUG_TIMING_LOGGING) {
-              printf("%s", [outputStr UTF8String]);
+              printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
           }
       }
     } else if ([item isKindOfClass:[LOTShapeGradientFill class]]) {
@@ -188,7 +188,7 @@
         
         NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-LOTShapeGradientFill\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
-            printf("%s", [outputStr UTF8String]);
+            printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
         }
       [self.containerLayer insertSublayer:gradientFill.outputLayer atIndex:0];
     } else if ([item isKindOfClass:[LOTShapeRepeater class]]) {
@@ -200,7 +200,7 @@
         
         NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-LOTShapeRepeater\n", timeInterval];
         if (ENABLE_DEBUG_TIMING_LOGGING) {
-            printf("%s", [outputStr UTF8String]);
+            printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
         }
     }
   }
@@ -215,7 +215,7 @@
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
         NSString *className = NSStringFromClass([_rootNode class]);
         NSString *outputStr  = [NSString stringWithFormat:@"%zd,RenderGroupBuildContents,%s\n", malloc_size((__bridge const void *) _rootNode), [className UTF8String]];
-        printf("%s", [outputStr UTF8String]);
+        printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
     }
 }
 
@@ -253,7 +253,7 @@
     NSString *className = NSStringFromClass([_rootNode class]);
     NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRenderGroup-performLocalUpdate,%s\n", timeInterval, [className UTF8String]];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
-        printf("%s", [outputStr UTF8String]);
+        printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
     }
 }
 

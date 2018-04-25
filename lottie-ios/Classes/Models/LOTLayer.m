@@ -30,7 +30,7 @@
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
         NSString *className = NSStringFromClass([self class]);
         NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithJSON\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-        printf("%s", [outputStr UTF8String]);
+        printf("%s,%s", [outputStr UTF8String],[self.layerName UTF8String]);
     }
   return self;
 }
@@ -180,7 +180,7 @@
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
         NSString *className = NSStringFromClass([self class]);
         NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-_mapFromJSON\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-        printf("%s", [outputStr UTF8String]);
+        printf("%s,%s", [outputStr UTF8String],[self.layerName UTF8String]);
     }
 }
 

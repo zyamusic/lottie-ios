@@ -41,7 +41,7 @@ const CGFloat kPOLYSTAR_MAGIC_NUMBER = .47829f;
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
         NSString *className = NSStringFromClass([self class]);
         NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-initWithInputNode\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-        printf("%s", [outputStr UTF8String]);
+        printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
     }
   return self;
 }
@@ -164,7 +164,7 @@ const CGFloat kPOLYSTAR_MAGIC_NUMBER = .47829f;
     
     NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPolystarAnimator-performLocalUpdate\n", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
-        printf("%s", [outputStr UTF8String]);
+        printf("%s,%s", [outputStr UTF8String],[self.keyname UTF8String]);
     }
 }
 
