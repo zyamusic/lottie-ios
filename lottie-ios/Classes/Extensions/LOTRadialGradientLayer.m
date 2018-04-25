@@ -91,7 +91,7 @@
     
     NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTRadialGradientLayer-drawInContext", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
-        printf("%s", [outputStr UTF8String]);
+        printf("%s\n", [outputStr UTF8String]);
     }
 }
 

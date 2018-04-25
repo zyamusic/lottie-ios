@@ -59,7 +59,7 @@
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
           NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeGroup\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return group;
   } else if ([type isEqualToString:@"st"]) {
@@ -67,7 +67,7 @@
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
           NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeStroke\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return stroke;
   } else if ([type isEqualToString:@"fl"]) {
@@ -75,7 +75,7 @@
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
           NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeFill\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return fill;
   } else if ([type isEqualToString:@"tr"]) {
@@ -83,7 +83,7 @@
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
           NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeTransform\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return transform;
   } else if ([type isEqualToString:@"sh"]) {
@@ -91,7 +91,7 @@
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
           NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapePath\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return path;
   } else if ([type isEqualToString:@"el"]) {
@@ -99,7 +99,7 @@
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
           NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeCircle\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return circle;
   } else if ([type isEqualToString:@"rc"]) {
@@ -107,7 +107,7 @@
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
           NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeRectangle\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return rectangle;
   } else if ([type isEqualToString:@"tm"]) {
@@ -115,7 +115,7 @@
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
           NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeTrimPath\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return trim;
   } else  if ([type isEqualToString:@"gs"]) {
@@ -125,7 +125,7 @@
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
           NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeGradientFill\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return gradientFill;
   } else if ([type isEqualToString:@"sr"]) {
@@ -133,7 +133,7 @@
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
           NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeStar\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return star;
   } else if ([type isEqualToString:@"mm"]) {
@@ -144,7 +144,7 @@
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
           NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-shapeItemWithJSON-shapeRepeater\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return repeater;
   } else {

@@ -33,7 +33,7 @@
       
       NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTSizeInterpolator-sizeValueForFrame", timeInterval];
       if (ENABLE_DEBUG_TIMING_LOGGING) {
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return [self.delegate sizeForFrame:frame.floatValue
                          startKeyframe:self.leadingKeyframe.keyframeTime.floatValue
@@ -47,12 +47,12 @@
     
     NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTSizeInterpolator-sizeValueForFrame", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
-        printf("%s", [outputStr UTF8String]);
+        printf("%s\n", [outputStr UTF8String]);
     }
     if (ENABLE_DEBUG_MEMORY_LOGGING) {
         NSString *className = NSStringFromClass([self class]);
         NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-sizeForValueFrame\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-        printf("%s", [outputStr UTF8String]);
+        printf("%s\n", [outputStr UTF8String]);
     }
   return returnSize;
 }

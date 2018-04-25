@@ -26,12 +26,12 @@
       
       NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPathInterpolator-pathForFrame", timeInterval];
       if (ENABLE_DEBUG_TIMING_LOGGING) {
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
       if (ENABLE_DEBUG_MEMORY_LOGGING) {
           NSString *className = NSStringFromClass([self class]);
           NSString *outputStr  = [NSString stringWithFormat:@"%zd,%s-pathForFrame\n", malloc_size((__bridge const void *) self), [className UTF8String]];
-          printf("%s", [outputStr UTF8String]);
+          printf("%s\n", [outputStr UTF8String]);
       }
     return [LOTBezierPath pathWithCGPath:callBackPath];
   }
@@ -84,7 +84,7 @@
     
     NSString *outputStr  = [NSString stringWithFormat:@"%f,LOTPathInterpolator-pathForFrame", timeInterval];
     if (ENABLE_DEBUG_TIMING_LOGGING) {
-        printf("%s", [outputStr UTF8String]);
+        printf("%s\n", [outputStr UTF8String]);
     }
   return returnPath;
 }
